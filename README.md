@@ -1,7 +1,7 @@
 # PlotTwist_language_program
 
 
-## Project Plan — AI-Powered Language Learning App (Oct 15 → Dec 31)
+## Project Plan (Oct 1 → Dec 20)
 
 | **Week** | **Dates** | **Goal** | **Key Tasks** | **Deliverables** |
 |-----------|------------|-----------|----------------|------------------|
