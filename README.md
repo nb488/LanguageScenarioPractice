@@ -1,5 +1,25 @@
 # PlotTwist_language_program
 
+
+## Project Plan — AI-Powered Language Learning App (Oct 15 → Dec 31)
+
+| **Week** | **Dates** | **Goal** | **Key Tasks** | **Deliverables** |
+|-----------|------------|-----------|----------------|------------------|
+| **1–2** | Oct 1 – Oct 15 | **Project Setup & Planning** | - Choose backend (Flask or Node)<br>- Set up GitHub repo and folder structure<br>- Install dependencies | Project initialized, basic README, working dev environment |
+| **3–4** | Oct 15 – Nov 1 | **React Fundamentals & UI Mockup** | - Learn components <br>- Build pages: Home, Practice, Feedback<br>- Set up React Router<br>- Use mock data for responses | Functional frontend mockup |
+| **5–6** | Nov 1 – Nov 15 | **Backend API & Frontend Integration** | - Set up REST API (Flask/Express)<br>- Create `/api/translate`, `/api/feedback`, `/api/history` routes<br>- Connect frontend using fetch/axios | Working frontend–backend communication |
+| **7–8** | Nov 15 – Dec 1 | **AI Integration** | - Connect to OpenAI or Hugging Face API<br>- Implement grammar correction / translation features | AI-powered responses integrated |
+| **9–10** | Dec 1 – Dec 20 | **Polish & Deployment** | - Add local storage or small DB for user history<br>- Optional mock login system<br>- Write docs and deploy demo | Polished, deployable language app with AI backend |
+
+
+
+### Extra Goals (if ahead of schedule)
+- Voice input/output (Web Speech API)
+- Progress tracking dashboard
+- Full authentication with JWT
+- Chat history replay
+
+
 ## User Stories
 - As a new user, I want to sign up and log in so I can access and practice my scripts.
 - As a logged-in user, I want to save my progress and scripts so I can view them later.
