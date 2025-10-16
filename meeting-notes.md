@@ -11,4 +11,9 @@ More ideas for project:
 - ideally users can save thier scripts to a profile.
 - start with text responses to the script when the user interacts with the program/script. Future work could use voice-recognition, having the program respond to voice answers from the user.
 
+Recommendations from others:
+- integrate cloud based, so the application is available online to others.
+- implementing AI is good.
+
+
 ### Oct 15, 2025
