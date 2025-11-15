@@ -1,0 +1,98 @@
+/* Container styles */
+.home-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #c4dfe5; 
+}
+
+.home-card {
+  background-color: #ffffff; 
+  padding: 3rem; /* p-8 */
+  border-radius: 0.75rem; /* rounded-lg */
+  width:50%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings */
+.home-card h1 {
+  font-size: 1.9rem;
+  font-weight: 700; 
+  margin-bottom: 1.5rem; 
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Section labels */
+.home-card label {
+  font-size: 1.2rem;
+  display: block;
+  padding:1rem;
+  font-weight: 600; /* font-semibold */
+  text-align: left;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+/* Button base styles */
+.home-btn {
+  padding: 0.5rem 1rem; 
+  border-radius: 0.5rem;
+  border: 2px solid lightgray;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+/* Button selected state */
+.home-btn.selected {
+  background-color: #c4dfe5; /* selected-button colour */
+  color: #0b7c95; /* text colour inside button */
+  border: 2px solid #0b7c95;
+}
+
+/* Button hover/focus states */
+.home-btn:hover {
+  background-color: lightgray; /* hover-color */
+  color: black; /* text hover-color */
+  border: 2px solid lightgray;
+}
+
+/* Specific layout helpers */
+.language-btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem; /* gap-2 */
+}
+
+.level-btns {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.scenario-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+/* Start button */
+.start-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #0b7c95; 
+  color: whitesmoke;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 1.8rem;
+}
+
+.start-btn:hover { 
+  border: 1px solid #0b7c95;
+}
