@@ -1,36 +1,35 @@
 import React, { useState } from 'react';
 import { Send, RotateCcw, Globe } from 'lucide-react';
-
-const OPENROUTER_API_KEY = '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';
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+ 
+const OPENROUTER_API_KEY = import.meta.env.OPENROUTER_API_KEY;
 
 const ChatApp = () => {
+  // retrieve user input for language, level, scenario
+  const location = useLocation();
+  const {language, level, scenario} = location.state || {};
+
   // State
-  const [stage, setStage] = useState('setup');
-  const [language, setLanguage] = useState('');
-  const [level, setLevel] = useState('');
-  const [scenario, setScenario] = useState('');
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const INITIAL_PROMPT = 
 
-  // Functions must be **inside the component**
+    `You are a helpful language practice partner. The user is learning ${language} at a ${level} level.
+    SCENARIO: ${scenario}
+    YOUR ROLE: You are playing a character in this scenario (e.g., if café, you're the barista).
+    
+    CRITICAL INSTRUCTIONS:
+    - Respond in ${language} **only using vocabulary suitable for a ${level} learner**.
+    - Always include an **English translation in parentheses after each sentence**.
+    - Keep responses very short: 1 simple sentence max.
+    - Do not introduce advanced or abstract vocabulary beyond beginner level.
+    - Stay in character for the scenario.
+    - Start the conversation by greeting them in character`;
+
   const startConversation = async () => {
-    setStage('chatting');
     setLoading(true);
-
-    const systemPrompt = `You are a helpful language practice partner. The user is learning ${language} at a ${level.toLowerCase()} level.
-
-SCENARIO: ${scenario}
-YOUR ROLE: You are playing a character in this scenario (e.g., if café, you're the barista).
-
-CRITICAL INSTRUCTIONS:
-- Respond in ${language} **only using vocabulary suitable for a ${level.toLowerCase()} learner**.
-- Always include an **English translation in parentheses after each sentence**.
-- Keep responses very short: 1 simple sentence max.
-- Do not introduce advanced or abstract vocabulary beyond beginner level.
-- Always stay in character for the scenario.
-- Stay in character for the scenario
-- Start the conversation by greeting them in character`;
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -41,7 +40,7 @@ CRITICAL INSTRUCTIONS:
         },
         body: JSON.stringify({
           model: 'tngtech/deepseek-r1t2-chimera:free',
-          messages: [{ role: 'user', content: systemPrompt }],
+          messages: [{ role: 'user', content: INITIAL_PROMPT }],
           max_tokens: 500,
         }),
       });
@@ -50,7 +49,9 @@ CRITICAL INSTRUCTIONS:
       const aiMessage = data.choices[0].message.content;
 
       setMessages([{ role: 'assistant', content: aiMessage }]);
+
     } catch (error) {
+
       console.error('Error:', error);
       setMessages([
         {
@@ -64,6 +65,16 @@ CRITICAL INSTRUCTIONS:
     setLoading(false);
   };
 
+
+  // run startConversation after window loads (no dependencies)
+  useEffect(() => {
+    if (language && level && scenario) {
+    startConversation();
+    }
+  }, []);
+
+
+
   const sendMessage = async () => {
     if (!input.trim()) return;
 
@@ -73,7 +84,19 @@ CRITICAL INSTRUCTIONS:
     setInput('');
     setLoading(true);
 
-    const conversationHistory = newMessages;
+    const NEXT_PROMPT = 
+
+    `You are a helpful language practice partner. The user is learning ${language} at a ${level} level.
+    SCENARIO: ${scenario}
+    YOUR ROLE: You are playing a character in this scenario (e.g., if café, you're the barista).
+    
+    CRITICAL INSTRUCTIONS:
+    - Respond to the conversation so far: ${JSON.stringify(newMessages)} in ${language} **only using vocabulary suitable for a ${level} learner**.
+    - Always include an **English translation in parentheses after each sentence**.
+    - Keep responses very short: 1 simple sentence max.
+    - Do not introduce advanced or abstract vocabulary beyond beginner level.`
+
+    const conversationHistory = [{ role: 'user', content: NEXT_PROMPT }, ...newMessages];
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -84,7 +107,7 @@ CRITICAL INSTRUCTIONS:
         },
         body: JSON.stringify({
           model: 'tngtech/deepseek-r1t2-chimera:free',
-          messages: conversationHistory,
+          messages: conversationHistory, //add systemPrompt
           max_tokens: 500,
         }),
       });
@@ -105,29 +128,6 @@ CRITICAL INSTRUCTIONS:
   return (
   <div>
     <header>Chat App</header>
-
-    {stage === 'setup' && (
-      <div>
-        <input
-          placeholder="Language"
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-        />
-        <input
-          placeholder="Level"
-          value={level}
-          onChange={(e) => setLevel(e.target.value)}
-        />
-        <input
-          placeholder="Scenario"
-          value={scenario}
-          onChange={(e) => setScenario(e.target.value)}
-        />
-        <button onClick={startConversation}>Start</button>
-      </div>
-    )}
-
-    {stage === 'chatting' && (
       <div>
         <div>
           {messages.map((msg, idx) => (
@@ -135,18 +135,16 @@ CRITICAL INSTRUCTIONS:
               {msg.content}
             </div>
           ))}
+
         </div>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message..."
-        />
+
+        <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a response..."/>
         <button onClick={sendMessage} disabled={loading}>
           Send
         </button>
+
         {loading && <p>Loading...</p>}
       </div>
-    )}
 
     <footer>Footer content</footer>
   </div>
