@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Send, RotateCcw, Globe } from 'lucide-react';
+//import { Send, RotateCcw, Globe } from 'lucide-react';
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import {useRef } from 'react';
+import './ChatApp.css';
  
-const OPENROUTER_API_KEY = import.meta.env.OPENROUTER_API_KEY;
+const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
 
 const ChatApp = () => {
   // retrieve user input for language, level, scenario
@@ -18,7 +20,7 @@ const ChatApp = () => {
 
     `You are a helpful language practice partner. The user is learning ${language} at a ${level} level.
     SCENARIO: ${scenario}
-    YOUR ROLE: You are playing a character in this scenario (e.g., if café, you're the barista).
+    YOUR ROLE: You are playing a character in this scenario.
     
     CRITICAL INSTRUCTIONS:
     - Respond in ${language} **only using vocabulary suitable for a ${level} learner**.
@@ -26,7 +28,8 @@ const ChatApp = () => {
     - Keep responses very short: 1 simple sentence max.
     - Do not introduce advanced or abstract vocabulary beyond beginner level.
     - Stay in character for the scenario.
-    - Start the conversation by greeting them in character`;
+    - Start the conversation by greeting them in character.
+    - Respond with text only`;
 
   const startConversation = async () => {
     setLoading(true);
@@ -65,11 +68,16 @@ const ChatApp = () => {
     setLoading(false);
   };
 
+  const hasStarted = useRef(false);
+
 
   // run startConversation after window loads (no dependencies)
   useEffect(() => {
+    if (hasStarted.current) return;
+
     if (language && level && scenario) {
-    startConversation();
+      hasStarted.current = true;
+      startConversation();
     }
   }, []);
 
@@ -88,15 +96,13 @@ const ChatApp = () => {
 
     `You are a helpful language practice partner. The user is learning ${language} at a ${level} level.
     SCENARIO: ${scenario}
-    YOUR ROLE: You are playing a character in this scenario (e.g., if café, you're the barista).
+    YOUR ROLE: You are playing a character in this scenario.
     
     CRITICAL INSTRUCTIONS:
-    - Respond to the conversation so far: ${JSON.stringify(newMessages)} in ${language} **only using vocabulary suitable for a ${level} learner**.
     - Always include an **English translation in parentheses after each sentence**.
     - Keep responses very short: 1 simple sentence max.
-    - Do not introduce advanced or abstract vocabulary beyond beginner level.`
-
-    const conversationHistory = [{ role: 'user', content: NEXT_PROMPT }, ...newMessages];
+    - Do not introduce advanced or abstract vocabulary beyond beginner level.
+    - Respond with text only.`
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -107,7 +113,10 @@ const ChatApp = () => {
         },
         body: JSON.stringify({
           model: 'tngtech/deepseek-r1t2-chimera:free',
-          messages: conversationHistory, //add systemPrompt
+          messages: [
+            { role: 'system', content: NEXT_PROMPT},
+            ...newMessages
+          ], 
           max_tokens: 500,
         }),
       });
@@ -126,27 +135,40 @@ const ChatApp = () => {
 
   // JSX return goes here
   return (
-  <div>
-    <header>Chat App</header>
-      <div>
-        <div>
+  <div class="chatapp-container">
+    <header >ChatApp</header>
+    <br></br>
+
+      <div class="message-section">
+
+        <div class="assistant-section">
+        <div class="assistant-image-holder">
+          <img src="/images/bear-image.jpg" alt="Assistant"/>
+        </div>
+        <strong>Francis Lemon</strong> 
+      </div>
+
+
+        <div class="messages">
           {messages.map((msg, idx) => (
-            <div key={idx} className={msg.role}>
+            <div key={idx} className={`message ${msg.role}`}>
               {msg.content}
             </div>
           ))}
-
         </div>
 
-        <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a response..."/>
-        <button onClick={sendMessage} disabled={loading}>
-          Send
-        </button>
+        {loading && <p>Typing...</p>}
 
-        {loading && <p>Loading...</p>}
+        <div class="input">
+          <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a response..."/>
+          <button onClick={sendMessage} disabled={loading}>
+            Send
+          </button>
+        </div>
+
+        
       </div>
 
-    <footer>Footer content</footer>
   </div>
 );
 };
