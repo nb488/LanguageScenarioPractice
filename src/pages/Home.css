@@ -29,11 +29,11 @@
 
 /* Section labels */
 .home-card label {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   display: block;
   padding:1rem;
   font-weight: 600; /* font-semibold */
-  text-align: left;
+  text-align: center;
   margin-bottom: 0.5rem; /* mb-2 */
 }
 

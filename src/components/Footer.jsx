@@ -1,3 +1,7 @@
+import './components.css';
+
 export default function Footer() {
-    return <footer>© 2025 PlotTwist!</footer>
+    return (
+    <footer class="site-footer"><strong>© 2025 Plot Twist</strong></footer>
+)
 }

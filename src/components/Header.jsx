@@ -1,9 +1,16 @@
+import './components.css';
 import { Link } from "react-router-dom";
 
 export default function Header() {
     return (
-        <nav>
-            <Link to="/">Home</Link> | <Link to="/about">About</Link>
+        <nav class="main-nav">
+            <h3 class="header-title"><strong>plot twist</strong></h3>
+            <div class="nav-links">
+                <Link to="/">🏠︎ HOME</Link> 
+                <Link to="/about">✔ PROGRESS</Link>
+                <Link to="/about">🗪 VOCAB</Link>
+                <Link to="/about">🔎︎ ABOUT</Link>
+            </div>
         </nav>
     )
 }
