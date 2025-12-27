@@ -11,7 +11,7 @@ export default function Home() {
   const [scenario, setScenario] = useState("Ordering at a Café");
   const navigate = useNavigate();
   
-  const LANGUAGES = ["Spanish", "French", "Japanese", "Portuguese"];
+  const LANGUAGES = ["Spanish", "French", "Korean", "Portuguese"];
   const LEVELS = ["Beginner", "Intermediate", "Advanced"];
   const SCENARIOS = ["Ordering at a Café", "Buying Groceries", "Shopping for Clothes"]
 
@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1>plot twist</h1>
+      <h1><strong>plot twist</strong></h1>
       <div className="home-card">
 
         {/*CHOOSE LANGUAGE*/}
@@ -63,7 +63,15 @@ export default function Home() {
               <button key={sc} className={`home-btn ${scenario === sc ? "selected" : ""}`} onClick={() => setScenario(sc)}>
                 {sc}
               </button>
+              
             ))}
+            <input type="text" 
+            className={`home-btn ${!SCENARIOS.includes(scenario) && scenario ? "selected" : ""}`} 
+            placeholder="Choose your own..." 
+            value={!SCENARIOS.includes(scenario) ? scenario : ""}
+            onChange={(e) => setScenario(e.target.value)}
+            maxLength={30}
+            />
           </div>
         </div>
 

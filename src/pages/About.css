@@ -1,4 +1,72 @@
+/* Page container */
 .about-container {
   min-height: 100vh;
-  padding: 2rem 2rem;
+  width: 100vw;
+  padding: 4rem 2rem;
+  background-color: #c4dfe5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.about-container h1 {
+  font-size: 2.4rem;
+  color: #0b7c95;
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+/* Intro paragraph */
+.about-container > p {
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+/* Feature / demo section */
+.demonstrate-app {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  width: 80%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Images */
+.demonstrate-app img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Text under images */
+.demonstrate-app p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #444;
+  align-self: center;
+  font-weight: 200;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .demonstrate-app {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-container h1 {
+    font-size: 2rem;
+  }
 }

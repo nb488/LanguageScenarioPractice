@@ -8,7 +8,7 @@ export default function Header() {
             <div class="nav-links">
                 <Link to="/">🏠︎ HOME</Link> 
                 <Link to="/about">✔ PROGRESS</Link>
-                <Link to="/about">🗪 VOCAB</Link>
+                <Link to="/vocab">🗪 VOCAB</Link>
                 <Link to="/about">🔎︎ ABOUT</Link>
             </div>
         </nav>

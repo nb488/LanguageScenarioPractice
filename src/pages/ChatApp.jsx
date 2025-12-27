@@ -137,7 +137,6 @@ const ChatApp = () => {
   return (
   <div class="chatapp-container">
     <header >ChatApp</header>
-    <br></br>
 
       <div class="message-section">
 
@@ -145,7 +144,7 @@ const ChatApp = () => {
         <div class="assistant-image-holder">
           <img src="/images/bear-image.jpg" alt="Assistant"/>
         </div>
-        <strong>Francis Lemon</strong> 
+       <strong>Guest</strong> {loading && <p>Typing...</p>}
       </div>
 
 
@@ -157,10 +156,8 @@ const ChatApp = () => {
           ))}
         </div>
 
-        {loading && <p>Typing...</p>}
-
         <div class="input">
-          <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a response..."/>
+          <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a response..." maxLength={30}/>
           <button onClick={sendMessage} disabled={loading}>
             Send
           </button>

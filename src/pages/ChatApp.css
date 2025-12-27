@@ -4,11 +4,11 @@
     display:flex;
     flex-direction:column;
     align-items: center;
-    background: #c4dfe5a2;
+    background: whitesmoke;
 }
 
 header{
-    padding:rem;
+    padding: 1rem;
     font-weight:bold;
     font-size:1.25rem;
 }
@@ -21,6 +21,7 @@ header{
     width: 80vw;
     background: rgba(187, 210, 242, 0.434);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    margin: 0rem 2rem 2rem 2rem;
 }
 
 .messages {
@@ -38,6 +39,7 @@ header{
     border-radius: 12px;
     border-bottom-left-radius: 0;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 1.25rem;
 }
 
 .message.user{
@@ -47,6 +49,7 @@ header{
     border-radius: 12px;
     border-bottom-right-radius: 0;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 1.25rem;
 }
 
 .input{
@@ -61,12 +64,14 @@ header{
     padding: 0.5rem 0.75rem;
     border-radius: 12px;
     border: 1px solid black;
+    font-size: 1.3rem;
 }
 
 .input button {
     background: #2ed5fa76;
     padding: 0.5rem 0.75rem;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-size: 1.3rem;
 }
 
 .assistant-section {

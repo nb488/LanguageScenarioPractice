@@ -1,0 +1,89 @@
+/* Page container */
+.vocab-container {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 3rem 2rem;
+  background-color: #c4dfe5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading */
+.vocab-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #0b7c95;
+}
+
+.vocab-container p {
+  margin-bottom: 2rem;
+  color: #333;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Input row */
+.vocab-input {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Text input */
+.vocab-input input {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #0b7c95;
+  font-size: 1rem;
+  min-width: 260px;
+}
+
+/* Dropdown */
+.vocab-input select {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #0b7c95;
+  background-color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Button */
+.vocab-input button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #0b7c95;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.vocab-input button:hover {
+  background-color: #095f72;
+}
+
+.vocab-input button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Result */
+.vocab-result {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: white;
+  border-radius: 8px;
+  min-width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.vocab-result p {
+  font-size: 1.2rem;
+  color: #0b7c95;
+  margin: 0;
+}
