@@ -1,102 +1,133 @@
 .chatapp-container {
-    height:90vh;
-    width:100vw;
-    display:flex;
-    flex-direction:column;
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    background: whitesmoke;
+    background: #fafafa;
 }
 
-header{
+header {
     padding: 1rem;
-    font-weight:bold;
-    font-size:1.25rem;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #111827;
+    letter-spacing: -0.01em;
 }
 
 .message-section {
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     height: 85vh;
     width: 80vw;
-    background: rgba(187, 210, 242, 0.434);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
     margin: 0rem 2rem 2rem 2rem;
 }
 
 .messages {
-    flex:1;
-    padding:1rem;
-    display:flex;
-    flex-direction: column;
-    gap:0.75rem;
-}
-
-.message.assistant{
-    align-self:flex-start;
-    background-color: whitesmoke;
-    padding: 0.2rem 0.8rem;
-    border-radius: 12px;
-    border-bottom-left-radius: 0;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    font-size: 1.25rem;
-}
-
-.message.user{
-    align-self: flex-end;
-    background-color: #2ed5fa76;
-    padding: 0.2rem 0.8rem;
-    border-radius: 12px;
-    border-bottom-right-radius: 0;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    font-size: 1.25rem;
-}
-
-.input{
+    flex: 1;
+    padding: 1.5rem;
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.message.assistant {
+    align-self: flex-start;
+    background-color: #f3f4f6;
+    padding: 0.625rem 1rem;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0.25rem;
+    box-shadow: none;
+    font-size: 1rem;
+    color: #374151;
+    max-width: 70%;
+    line-height: 1.5;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #111827;
+    color: #ffffff;
+    padding: 0.625rem 1rem;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0.25rem;
+    box-shadow: none;
+    font-size: 1rem;
+    max-width: 70%;
+    line-height: 1.5;
+}
+
+.input {
+    display: flex;
+    gap: 0.625rem;
     flex-wrap: wrap;
-    padding: 0.75rem;
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+    background: #fafafa;
 }
 
 .input input {
     flex: 1;
-    padding: 0.5rem 0.75rem;
-    border-radius: 12px;
-    border: 1px solid black;
-    font-size: 1.3rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+    font-size: 1rem;
+    background: #ffffff;
+    transition: border-color 0.2s ease;
+}
+
+.input input:focus {
+    outline: none;
+    border-color: #9ca3af;
 }
 
 .input button {
-    background: #2ed5fa76;
-    padding: 0.5rem 0.75rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    font-size: 1.3rem;
+    background: #111827;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none;
+}
+
+.input button:hover {
+    background: #1f2937;
+    transform: translateY(-1px);
 }
 
 .assistant-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 0.9rem;
-    border: 1px solid rgba(128, 128, 128, 0.502);
-    border-style: none none solid none;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
 }
 
 .assistant-image-holder {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    overflow: hidden; /* clips image*/
+    overflow: hidden;
     flex-shrink: 0;
-    border: 1px solid black;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 2px solid black;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .assistant-image-holder img {
     width: 100%;
     height: 100%;
-    transform: scale(1.60);
+    transform: scale(0.8);
 }
 

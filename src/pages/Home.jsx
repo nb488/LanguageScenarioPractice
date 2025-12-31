@@ -67,7 +67,7 @@ export default function Home() {
             ))}
             <input type="text" 
             className={`home-btn ${!SCENARIOS.includes(scenario) && scenario ? "selected" : ""}`} 
-            placeholder="Choose your own..." 
+            placeholder="Create your own..." 
             value={!SCENARIOS.includes(scenario) ? scenario : ""}
             onChange={(e) => setScenario(e.target.value)}
             maxLength={30}

@@ -1,37 +1,59 @@
+/* Navigation */
 .main-nav {
-    display:flex;
-    background: #c4dfe5;
-    padding: 0.1rem 2rem;
-    align-items: center;
-    gap: 60px;
-    position:sticky;
-    top: 0;
-    z-index: 100;
-    border: 2px solid #0b7c95;
-    border-style: none none solid none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
 }
 
+/* Logo */
+.main-nav img {
+  width: 32px;
+  height: auto;
+  opacity: 0.9;
+}
+
+/* Links */
 .nav-links {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 2rem;
 }
 
 .main-nav a {
-    color: #0b7c95;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .main-nav a:hover {
-    color: whitesmoke;
+  color: #111827;
 }
 
-.header-title{
-    font-size: 30px;
+/* Title */
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111827;
 }
 
+/* Footer */
 .site-footer {
-    display: flex;
-    justify-content: center;
-    padding: 0.5rem;
-    background:#c4dfe5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: #fafafa;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  color: #9ca3af;
 }

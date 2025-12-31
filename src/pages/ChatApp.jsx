@@ -23,12 +23,12 @@ const ChatApp = () => {
     YOUR ROLE: You are playing a character in this scenario.
     
     CRITICAL INSTRUCTIONS:
-    - Respond in ${language} **only using vocabulary suitable for a ${level} learner**.
-    - Always include an **English translation in parentheses after each sentence**.
-    - Keep responses very short: 1 simple sentence max.
+    - Respond in ${language} only using vocabulary suitable for a ${level} learner.
+    - Keep responses very short: 2 simple sentence max.
     - Do not introduce advanced or abstract vocabulary beyond beginner level.
     - Stay in character for the scenario.
-    - Start the conversation by greeting them in character.
+    - Begin by greeting them in character and asking a question related to the scenario.
+    - Always include an English translation in parentheses after your response.
     - Respond with text only`;
 
   const startConversation = async () => {
@@ -99,10 +99,13 @@ const ChatApp = () => {
     YOUR ROLE: You are playing a character in this scenario.
     
     CRITICAL INSTRUCTIONS:
-    - Always include an **English translation in parentheses after each sentence**.
-    - Keep responses very short: 1 simple sentence max.
+    - Respond in ${language} only using vocabulary suitable for a ${level} learner.
+    - Keep responses very short: 2 simple sentence max.
     - Do not introduce advanced or abstract vocabulary beyond beginner level.
-    - Respond with text only.`
+    - Stay in character for the scenario.
+    - Begin by greeting them in character and asking a question related to the scenario.
+    - Always include an English translation in parentheses after your response.
+    - Respond with text only`;
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -142,7 +145,7 @@ const ChatApp = () => {
 
         <div class="assistant-section">
         <div class="assistant-image-holder">
-          <img src="/images/bear-image.jpg" alt="Assistant"/>
+          <img src="/images/cat-image.png" alt="Assistant"/>
         </div>
        <strong>Guest</strong> {loading && <p>Typing...</p>}
       </div>
@@ -157,7 +160,7 @@ const ChatApp = () => {
         </div>
 
         <div class="input">
-          <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a response..." maxLength={30}/>
+          <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type a response..." maxLength={60}/>
           <button onClick={sendMessage} disabled={loading}>
             Send
           </button>
